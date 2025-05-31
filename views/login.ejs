@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login | SpiderVerse</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: url('https://i.imgur.com/FZypR60.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      backdrop-filter: brightness(0.6) blur(3px);
+    }
+
+    .container {
+      background: rgba(0, 0, 0, 0.75);
+      padding: 2rem 3rem;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(255, 0, 0, 0.6), 0 0 20px rgba(0, 162, 255, 0.7);
+      width: 350px;
+      border: 1px solid #ff1f57;
+      animation: pulseShadow 3s infinite ease-in-out;
+    }
+
+    @keyframes pulseShadow {
+      0%, 100% {
+        box-shadow: 0 0 25px rgba(255, 0, 0, 0.6), 0 0 20px rgba(0, 162, 255, 0.7);
+      }
+      50% {
+        box-shadow: 0 0 40px rgba(255, 0, 0, 0.8), 0 0 35px rgba(0, 162, 255, 0.9);
+      }
+    }
+
+    h2 {
+      margin-bottom: 1.5rem;
+      text-align: center;
+      color: #ff1f57;
+      font-size: 2rem;
+      text-shadow: 0 0 5px #ff1f57, 0 0 10px #009dff;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input[type="text"], input[type="password"] {
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      background: #222;
+      color: #eee;
+      outline: none;
+      transition: 0.3s ease;
+      box-shadow: inset 0 0 5px #009dff;
+    }
+
+    input:focus {
+      box-shadow: 0 0 10px #ff1f57;
+      background: #111;
+    }
+
+    button {
+      padding: 0.75rem;
+      background: linear-gradient(to right, #ff1f57, #009dff);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #009dff, 0 0 10px #ff1f57;
+    }
+
+    .register-link {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .register-link a {
+      color: #009dff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .register-link a:hover {
+      text-shadow: 0 0 5px #ff1f57;
+      text-decoration: underline;
+    }
+
+    .error-list {
+      margin-bottom: 1rem;
+      color: #ff6b81;
+      font-size: 0.9rem;
+      list-style-type: none;
+      padding-left: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Spider-Verse Login</h2>
+
+    <% if (errors && errors.length > 0) { %>
+      <ul class="error-list">
+        <% errors.forEach(error => { %>
+          <li><%= error.msg %></li>
+        <% }) %>
+      </ul>
+    <% } %>
+
+    <form id="loginForm" method="POST" action="/login" novalidate>
+      <input
+        type="text"
+        name="username"
+        placeholder="Username"
+        value="<%= data.username ? data.username : '' %>"
+        required
+        minlength="3"
+        autocomplete="username"
+      />
+
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        required
+        minlength="5"
+        autocomplete="current-password"
+      />
+
+      <button type="submit">Web In</button>
+    </form>
+
+    <div class="register-link">
+      <p>New to the multiverse? <a href="/register">Join the squad</a></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      const username = this.username.value.trim();
+      const password = this.password.value.trim();
+      if (username.length < 3) {
+        alert('Username must be at least 3 characters');
+        e.preventDefault();
+      } else if (password.length < 5) {
+        alert('Password must be at least 5 characters');
+        e.preventDefault();
+      }
+    });
+  </script>
+</body>
+</html>
