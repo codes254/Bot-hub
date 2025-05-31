@@ -1,0 +1,21 @@
+{
+  "name": "bot-hub",
+  "version": "1.0.0",
+  "description": "A web dashboard for your bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": ">=18.x"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.9",
+    "express": "^4.19.2",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.18.0",
+    "express-validator": "^7.0.1",
+    "multer": "^1.4.5-lts.1"
+  }
+}
