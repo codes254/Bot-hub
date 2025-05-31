@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title><%= bot.title %> - Bot Details</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0d0d0d;
+      color: #f0f0f0;
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 700px;
+      width: 100%;
+      background: #111111;
+      border: 2px solid #ff0000;
+      border-radius: 16px;
+      padding: 30px 40px;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.4),
+                  0 0 30px rgba(0, 153, 255, 0.3);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .container:hover {
+      background: #1a1a1a;
+      box-shadow: 0 0 30px rgba(255, 0, 0, 0.6),
+                  0 0 50px rgba(0, 153, 255, 0.4);
+    }
+
+    a.back-link {
+      color: #00bcd4;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 25px;
+      transition: color 0.3s ease;
+    }
+
+    a.back-link:hover {
+      color: #03e9f4;
+      text-decoration: underline;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      margin-bottom: 15px;
+      color: #ff1744;
+      letter-spacing: 1px;
+      text-shadow: 0 0 6px #ff1744aa;
+    }
+
+    p.description {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      color: #ccc;
+    }
+
+    .bot-meta {
+      font-size: 0.9rem;
+      color: #888;
+      margin-bottom: 35px;
+      font-style: italic;
+    }
+
+    .download-btn {
+      background: linear-gradient(135deg, #ff1744, #00e5ff);
+      color: #0d0d0d;
+      font-weight: 700;
+      padding: 12px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 1rem;
+      box-shadow: 0 5px 20px rgba(255, 23, 68, 0.5),
+                  0 5px 30px rgba(0, 229, 255, 0.3);
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      display: inline-block;
+    }
+
+    .download-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255, 23, 68, 0.7),
+                  0 8px 40px rgba(0, 229, 255, 0.5);
+    }
+
+    .no-url {
+      color: #ff5252;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/" class="back-link">⬅ Back to all bots</a>
+
+    <h1><%= bot.title %></h1>
+
+    <p class="description"><%= bot.description %></p>
+
+    <div class="bot-meta">
+      Uploaded by <strong><%= bot.uploader %></strong> on <%= new Date(bot.uploadedAt).toLocaleString() %>
+    </div>
+
+    <% if (bot.url) { %>
+      <a href="<%= bot.url %>" target="_blank" rel="noopener noreferrer" class="download-btn">
+        🕷️ Download Bot
+      </a>
+    <% } else { %>
+      <p class="no-url">⚠️ No download link provided.</p>
+    <% } %>
+  </div>
+</body>
+</html>
