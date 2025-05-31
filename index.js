@@ -63,7 +63,7 @@ app.get('/', (req, res) => {
   const paginatedBots = bots.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   res.render('bots-list', {
-    title: 'Home',
+    title: 'THEE bot-hub',
     user: req.session.user,
     bots: paginatedBots,
     currentPage,
