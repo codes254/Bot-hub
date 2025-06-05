@@ -214,7 +214,11 @@ app.use((req, res) => {
   res.status(404).send('404 Not Found');
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server up at http://localhost:${PORT}`);
-});
+(async () => {
+  await connectDB(); // wait for DB before firing up server
+
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`✅ Server running at http://localhost:${PORT}`);
+  });
+})();
