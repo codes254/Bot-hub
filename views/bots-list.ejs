@@ -4,228 +4,232 @@
 <meta charset="UTF-8" />
 <title>Home - All Bots</title>
 <style>
+/* your existing styles (unchanged) */
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Russo+One&display=swap');
 
 body {
-margin: 0;
-padding: 20px;
-background: #0a0a0a;
-color: #f0f0f0;
-font-family: 'Share Tech Mono', monospace;
-position: relative;
-min-height: 100vh;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-overflow-x: hidden;
+  margin: 0;
+  padding: 20px;
+  background: #0a0a0a;
+  color: #f0f0f0;
+  font-family: 'Share Tech Mono', monospace;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-x: hidden;
 }
 
 /* subtle spiderweb background */
 body::before {
-content: "";
-position: fixed;
-top: 0; left: 0; right: 0; bottom: 0;
-background-image:
-radial-gradient(circle at center, rgba(255, 0, 0, 0.05) 0%, transparent 70%),
-url('https://i.imgur.com/FZypR60.jpeg');
-background-repeat: no-repeat;
-background-position: center;
-background-size: 80%;
-opacity: 0.12;
-pointer-events: none;
-z-index: 0;
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+  radial-gradient(circle at center, rgba(255, 0, 0, 0.05) 0%, transparent 70%),
+  url('https://i.imgur.com/FZypR60.jpeg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
 }
 
 nav {
-margin-bottom: 30px;
-font-family: 'Russo One', sans-serif;
-font-weight: 700;
-font-size: 1.1rem;
-color: #ff1a1a;
-text-shadow: 0 0 8px #ff1a1a;
-z-index: 1;
+  margin-bottom: 30px;
+  font-family: 'Russo One', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #ff1a1a;
+  text-shadow: 0 0 8px #ff1a1a;
+  z-index: 1;
 }
 nav a {
-color: #ff4d4d;
-margin-right: 20px;
-text-decoration: none;
-transition: color 0.3s ease;
+  color: #ff4d4d;
+  margin-right: 20px;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 nav a:hover {
-color: #ff1a1a;
-text-decoration: underline;
-text-shadow: 0 0 12px #ff1a1a;
+  color: #ff1a1a;
+  text-decoration: underline;
+  text-shadow: 0 0 12px #ff1a1a;
 }
 nav span {
-color: #ff4d4d;
-text-shadow: 0 0 6px #ff4d4d;
+  color: #ff4d4d;
+  text-shadow: 0 0 6px #ff4d4d;
 }
 
 h1 {
-font-family: 'Russo One', sans-serif;
-color: #ff1a1a;
-font-size: 3rem;
-text-align: center;
-margin-bottom: 25px;
-text-shadow:
-0 0 6px #ff1a1a,
-0 0 12px #ff0000,
-0 0 20px #800000;
-letter-spacing: 3px;
-z-index: 1;
+  font-family: 'Russo One', sans-serif;
+  color: #ff1a1a;
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 25px;
+  text-shadow:
+    0 0 6px #ff1a1a,
+    0 0 12px #ff0000,
+    0 0 20px #800000;
+  letter-spacing: 3px;
+  z-index: 1;
 }
 
 .bot-list {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-gap: 25px;
-padding: 0 15px;
-z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+  padding: 0 15px;
+  z-index: 1;
 }
 
 .bot-item {
-background: #1b1b1b;
-border-radius: 15px;
-padding: 20px;
-box-shadow:
-0 0 10px #ff1a1a,
-inset 0 0 10px #330000;
-cursor: pointer;
-transition: transform 0.3s ease, box-shadow 0.3s ease;
-position: relative;
-overflow: hidden;
+  background: #1b1b1b;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow:
+    0 0 10px #ff1a1a,
+    inset 0 0 10px #330000;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 .bot-item:hover {
-transform: scale(1.07);
-box-shadow:
-0 0 20px #ff3333,
-inset 0 0 15px #660000;
+  transform: scale(1.07);
+  box-shadow:
+    0 0 20px #ff3333,
+    inset 0 0 15px #660000;
 }
 
 .bot-name {
-font-family: 'Russo One', sans-serif;
-font-size: 1.8rem;
-font-weight: 700;
-color: #ff0000;
-text-shadow:
-0 0 8px #ff0000,
-0 0 12px #cc0000;
-text-decoration: none;
-display: block;
-margin-bottom: 12px;
-letter-spacing: 2px;
-transition: color 0.3s ease;
+  font-family: 'Russo One', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ff0000;
+  text-shadow:
+    0 0 8px #ff0000,
+    0 0 12px #cc0000;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 12px;
+  letter-spacing: 2px;
+  transition: color 0.3s ease;
 }
 .bot-name:hover {
-color: #ff4d4d;
-text-shadow: 0 0 15px #ff4d4d;
-text-decoration: underline;
+  color: #ff4d4d;
+  text-shadow: 0 0 15px #ff4d4d;
+  text-decoration: underline;
 }
 
 .bot-desc {
-font-family: 'Share Tech Mono', monospace;
-font-size: 1rem;
-color: #e6e6e6;
-margin-bottom: 15px;
-line-height: 1.5;
-min-height: 60px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1rem;
+  color: #e6e6e6;
+  margin-bottom: 15px;                                                                               
+  line-height: 1.5;
+  min-height: 60px;
 }
 
 .bot-meta {
-font-family: 'Share Tech Mono', monospace;
-font-size: 0.9rem;
-color: #b22222;
-font-style: italic;
-text-shadow: 0 0 6px #7a0000;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.9rem;
+  color: #b22222;
+  font-style: italic;
+  text-shadow: 0 0 6px #7a0000;
 }
 
 .pagination {
-text-align: center;
-margin: 35px 0 60px;
-font-family: 'Russo One', sans-serif;
-font-weight: 700;
-font-size: 1.1rem;
-color: #ff1a1a;
-user-select: none;
-letter-spacing: 2px;
-z-index: 1;
+  text-align: center;
+  margin: 35px 0 60px;
+  font-family: 'Russo One', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #ff1a1a;
+  user-select: none;
+  letter-spacing: 2px;
+  z-index: 1;
 }
 .pagination a {
-color: #cc0000;
-margin: 0 14px;
-text-decoration: none;
-transition: color 0.3s ease;
+  color: #cc0000;
+  margin: 0 14px;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 .pagination a:hover {
-color: #ff3333;
-text-shadow: 0 0 8px #ff3333;
-text-decoration: underline;
+  color: #ff3333;
+  text-shadow: 0 0 8px #ff3333;
+  text-decoration: underline;
 }
 .pagination span {
-margin: 0 16px;
-color: #e6e6e6;
-user-select: none;
+  margin: 0 16px;
+  color: #e6e6e6;
+  user-select: none;
 }
 
 footer {
-text-align: center;
-padding: 20px 10px;
-font-weight: 700;
-font-family: 'Russo One', sans-serif;
-font-size: 1rem;
-color: #ff1a1a;
-text-shadow:
-0 0 8px #ff1a1a,
-0 0 15px #800000;
-border-top: 1px solid #440000;
-letter-spacing: 2px;
-background: #0a0a0a;
-user-select: none;
-z-index: 1;
+  text-align: center;
+  padding: 20px 10px;
+  font-weight: 700;
+  font-family: 'Russo One', sans-serif;
+  font-size: 1rem;
+  color: #ff1a1a;
+  text-shadow:
+    0 0 8px #ff1a1a,
+    0 0 15px #800000;
+  border-top: 1px solid #440000;
+  letter-spacing: 2px;
+  background: #0a0a0a;                                                                               
+  user-select: none;
+  z-index: 1;
 }
 </style>
 <script type='text/javascript' src='//pl26800543.profitableratecpm.com/84/56/8b/84568b1f22ed58fdb06bf99b086baaa6.js'></script>
 </head>
 <body>
 <nav>
-<% if (user) { %>
+  <% if (user) { %>
     <span>Logged in as <strong><%= user.username %></strong></span> |
     <a href="/dashboard">Dashboard</a> |
     <a href="/upload-bot">Upload Bot</a> |
     <a href="/logout">Logout</a>
-    <% } else { %>
+  <% } else { %>
     <a href="/login">Login</a> |
     <a href="/register">Register</a>
-    <% } %>
-    </nav>
+  <% } %>
+</nav>
 
-    <h1>All Uploaded Bots</h1>
+<h1>All Uploaded Bots</h1>
 <div class="bot-list">
-<% if (!bots || bots.length === 0) { %>
+  <% if (!bots || bots.length === 0) { %>
     <p style="text-align:center; font-size: 1.2rem; color: #b22222; user-select:none;">
-    No bots uploaded yet. Be the first!
+      No bots uploaded yet. Be the first!
     </p>
-    <% } else { %>
-    <% bots.forEach(bot => { %>
-        <div class="bot-item" onclick="location.href='/bots/<%= bot.id %>'" title="Click to see details">
-        <a href="/bots/<%= bot.id %>" class="bot-name"><%= bot.title %></a>
-        <div class="bot-desc"><%= bot.description %></div>
-        <div class="bot-meta">Uploaded by <strong><%= bot.uploader %></strong> on <%= new Date(bot.uploadedAt).toLocaleString() %></div>
-        </div>
-        <% }); %>
-    <% } %>
+  <% } else { %>
+   <% bots.forEach(bot => { %>
+  <div class="bot-item" onclick="location.href='/bots/<%= bot._id %>'" title="Click to see detail">
+    <!-- No <a> needed since entire div is clickable -->
+    <span class="bot-name"><%= bot.title %></span>
+    <div class="bot-desc"><%= bot.description %></div>
+    <div class="bot-meta">
+      Uploaded by <strong><%= bot.uploader %></strong> on <%= new Date(bot.uploadedAt).toLocaleString() %>
     </div>
+  </div>
+    <% }); %>
+  <% } %>
+</div>
 
-    <div class="pagination">
-    <% if (currentPage > 1) { %>
+<div class="pagination">
+  <% if (currentPage > 1) { %>
     <a href="/?page=<%= currentPage - 1 %>">⬅ Prev</a>
-    <% } %>
-    <span>Page <%= currentPage %> of <%= totalPages %></span>
-<% if (currentPage < totalPages) { %>
+  <% } %>
+  <span>Page <%= currentPage %> of <%= totalPages %></span>
+  <% if (currentPage < totalPages) { %>
     <a href="/?page=<%= currentPage + 1 %>">Next ➡</a>
-    <% } %>
-    </div>
+  <% } %>
+</div>
 
-    <footer>made by FBI king</footer>
+<footer>made by FBI king</footer>
 </body>
 </html>
