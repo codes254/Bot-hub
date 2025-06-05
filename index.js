@@ -38,7 +38,7 @@ async function connectDB() {
     await client.connect();
     console.log('✅ MongoDB Connected');
 
-    const db = client.db('bothubDB'); // replace with actual DB name
+    const db = client.db('botHubDB'); // replace with actual DB name
     usersCollection = db.collection('users');
     botsCollection = db.collection('bots');
   } catch (err) {
