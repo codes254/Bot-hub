@@ -23,20 +23,26 @@ app.use(session({
 }));
 
 // MongoDB connection
-const uri = 'mongodb+srv://Fbiking:gtamagadi@cluster0.l3ln0c2.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
-const client = new MongoClient(uri);
+const uri = 'mongodb+srv://Fbiking:gtamagadi@cluster0.l3ln0c2.mongodb.net/?retryWrites=true&w=majority&tls=true&appName=Cluster0';
+const client = new MongoClient(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  ssl: true,
+  tlsAllowInvalidCertificates: false,
+});
+
 let usersCollection, botsCollection;
 
 async function connectDB() {
   try {
     await client.connect();
-    const db = client.db('botHubDB'); // You can name this whatever
+    console.log('✅ MongoDB Connected');
+
+    const db = client.db('bothubDB'); // replace with actual DB name
     usersCollection = db.collection('users');
     botsCollection = db.collection('bots');
-    console.log('[✔] Connected to MongoDB!');
   } catch (err) {
-    console.error('[❌] MongoDB Connection Error:', err);
-    process.exit(1);
+    console.error('❌ MongoDB connection error:', err);
   }
 }
 
